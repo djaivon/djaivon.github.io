@@ -1,21 +1,22 @@
 body{
-    background-image: linear-gradient(45deg, red, blue);
+    background-image: linear-gradient(45deg, peachpuff, purple);
 }
 
 header {
-    border: solid 1px red;
+    border-bottom: solid 3px white;
     width: 35%;
-    color: black;
+    color: white;
     text-align: center;
     font-size: 50px;
     margin: 20px auto;
 }
 
 button {
-    color: red;
+    background-color: skyblue;
+    color: black;
     padding: 5px;
     margin: 5px;
-    border-radius: 5px;
+    border-radius: 45%;
 }
 
 img {
@@ -27,6 +28,6 @@ img {
 }
 
 .selected{
-    background-color: green;
+    background-color: pink;
 }
 
