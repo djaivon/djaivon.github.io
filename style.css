@@ -45,3 +45,12 @@ img {
 .error{
     color: red;
 }
+
+a {
+    color: royalblue;
+    cursor: pointer;
+}
+
+a:hover{
+    color: purple;
+}

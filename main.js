@@ -24,13 +24,20 @@ function MakeButton(dog){
     btn.onclick = showImage;
 }
 
+function createComment(doc){
+    var div = document.createElement('div');
+    div.innerText = doc.comment;
+    $('#comments').appendChild(div);
+    div.className = 'comment';
+}
+
 window.onload = function() {
 this.fetch('https://dog.ceo/api/breeds/list/all')
 .then(r => r.json())
 .then((data) => {
     Object.keys(data.message)
     .forEach(MakeButton) 
-});
+})
 
 onLogin(user => {
     if(user){
@@ -40,10 +47,12 @@ onLogin(user => {
         $('#signupDiv').style.display = 'none';
     }else{
         //user just logged out
-        $('#addCommentDiv').style.display = 'none';
         $('#loginDiv').style.display = 'block';
+        $('#addCommentDiv').style.display = 'none';
     }
 });
+
+forEachComment( createComment );
 
 if(isLoggedIn()){
     $('#addCommentDiv').style.display = 'block';
@@ -53,23 +62,24 @@ if(isLoggedIn()){
 
 $('#loginLink').onclick = function(){
     $('#loginDiv').style.display = 'block';
-    $('signupDiv').style.display = 'none';
+    $('#signupDiv').style.display = 'none';
 }
 
 $('#signupLink').onclick = function(){
-    $('#loginDiv')
+    $('#loginDiv').style.display = 'none';
+    $('#signupDiv').style.display = 'block';
 }
 
 $('#logout').onclick = function(){
     logout();
 }
 
-$('#loginBtn').onClick = function(){
+$('#loginBtn').onclick = function(){
     login( $('#email').value, $('#password').value)
     .catch( err => $('.error').innerText = err.message);
 }
 
-$('#registerBtn').onClick = function(){
+$('#registerBtn').onclick = function(){
     signup( $('#emailReg').value, $('#passwordReg').value)
     .catch( err => $('.error').innerText = err.message);
 }
